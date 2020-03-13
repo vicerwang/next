@@ -1,5 +1,5 @@
 /*!
- * @alifd/next@1.20.0-beta.2 (https://fusion.design)
+ * @alifd/next@1.20.0-beta.3 (https://fusion.design)
  * Copyright 2018-present Alibaba Group,
  * Licensed under MIT (https://github.com/alibaba-fusion/next/blob/master/LICENSE)
  */
