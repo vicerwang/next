@@ -67,6 +67,39 @@ describe('Nav', () => {
         });
     });
 
+    it('should support fixed', () => {
+        wrapper = render(
+            <Nav
+                style={{ left: 0, top: 0, position: 'fixed', width: 70}}
+                popupStyle={{position: 'fixed'}}
+                popupClassName="fixed-popup-sub3"
+                type="primary"
+                mode="popup"
+                defaultOpenKeys="sub3"
+                activeDirection="left"
+                triggerType="click"
+            >
+                <SubNav label="产品1">
+                    <Item>Item 1</Item>
+                </SubNav>
+                <SubNav label="产品2">
+                    <Item>Item 1</Item>
+                    <Item>Item 2</Item>
+                </SubNav>
+                <SubNav label="产品3" key="sub3">
+                    <Item>Item 1</Item>
+                    <Item>Item 2</Item>
+                    <Item>Item 3</Item>
+                </SubNav>
+                <Item>其他</Item>
+            </Nav>
+        );
+
+        const popup = document.querySelectorAll('.fixed-popup-sub3');
+        assert(popup[0].style.top === '80px');
+        assert(popup[0].style.left === '68px');
+    });
+
     it('should support direction', () => {
         wrapper = mount(
             <Nav>
@@ -409,38 +442,5 @@ describe('Nav', () => {
             assert(wrapper.find(Tooltip).length);
             done();
         }, 500);
-    });
-
-    it('should support fixed', () => {
-        wrapper = render(
-            <Nav
-                style={{ left: 0, top: 0, position: 'fixed', width: 70}}
-                popupStyle={{position: 'fixed'}}
-                popupClassName="fixed-popup-sub3"
-                type="primary"
-                mode="popup"
-                defaultOpenKeys="sub3"
-                activeDirection="left"
-                triggerType="click"
-            >
-                <SubNav label="产品1">
-                    <Item>Item 1</Item>
-                </SubNav>
-                <SubNav label="产品2">
-                    <Item>Item 1</Item>
-                    <Item>Item 2</Item>
-                </SubNav>
-                <SubNav label="产品3" key="sub3">
-                    <Item>Item 1</Item>
-                    <Item>Item 2</Item>
-                    <Item>Item 3</Item>
-                </SubNav>
-                <Item>其他</Item>
-            </Nav>
-        );
-
-        const popup = document.querySelectorAll('.fixed-popup-sub3');
-        assert(popup[0].style.top === '80px');
-        assert(popup[0].style.left === '68px');
     });
 });

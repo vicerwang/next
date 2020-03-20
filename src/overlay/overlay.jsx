@@ -289,14 +289,14 @@ class Overlay extends Component {
     }
 
     componentDidMount() {
-        if (this.state.visible) {
-            this.doAnimation(true, false);
-            this._isMounted = true;
-        }
+        this.doAnimation(true, false);
 
         this.addDocumentEvents();
-
         overlayManager.addOverlay(this);
+
+        if (this.state.visible) {
+            this._isMounted = true;
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -340,10 +340,12 @@ class Overlay extends Component {
         } else {
             const wrapperNode = this.getWrapperNode();
             if (open) {
-                this.props.onOpen();
-                this.props.afterOpen();
-                dom.addClass(wrapperNode, 'opened');
-                overlayManager.addOverlay(this);
+                setTimeout(() => {
+                    this.props.onOpen();
+                    this.props.afterOpen();
+                    dom.addClass(wrapperNode, 'opened');
+                    overlayManager.addOverlay(this);
+                });
             } else if (close) {
                 this.props.onClose();
                 this.props.afterClose();
