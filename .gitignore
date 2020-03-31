@@ -71,7 +71,7 @@ scripts/server-remote
 __html/
 test/coverage/
 test/**/coverage/
-compiled_docs/
+
 coverage/
 docs-lang/
 gemini-report/
